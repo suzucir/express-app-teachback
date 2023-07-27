@@ -15,13 +15,13 @@ jobs:
       - run: 
           name: Run tests
           command: |
-            TEST=$(circleci tests glob "~/__tests__/*.js" | circleci tests split  --split-by=timings)
-            npm test $TEST
+              TEST=$(circleci tests glob "__test__/*.js" | circleci tests split --split-by=timings)
+              npm test $TEST
       - run:
           command: cp junit.xml ~/testresults/
           when: always
       - store_test_results:
-          path: ~/testresults/
+          path: ~/testresults
 workflows:
   basic_workflow:
     jobs:
